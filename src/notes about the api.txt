@@ -1,0 +1,9 @@
+Notes:
+
+The endpoint /predict accepts a JSON payload validated by Pydantic.
+
+/predict_batch accepts a CSV and writes a predictions CSV to artifacts/predictions/ and returns the filename.
+
+/predictions/{filename} allows downloading the CSV (you'll need to import FileResponse from fastapi.responses if you use that endpoint).
+
+In production, set allow_origins properly and add authentication (API keys / OAuth).
