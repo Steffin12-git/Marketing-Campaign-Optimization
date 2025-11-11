@@ -1,0 +1,25 @@
+# --- Setup and run FastAPI environment for Bank Marketing Project ---
+
+# 1. Create virtual environment in current directory
+python -m venv .venv
+
+# 2. Activate virtual environment (PowerShell)
+.venv\Scripts\activate.bat
+
+# 3. Install dependencies from full requirements file
+pip install -r .\artifacts\requirements.txt
+
+# (Optional) If you want minimal non-GPU setup, use cleaned requirements file
+pip install -r .\artifacts\requirements_clean.txt
+
+# 4. Upgrade pip to the latest version
+python.exe -m pip install --upgrade pip
+
+# 5. Verify that all core libraries are installed correctly
+python - <<'PY'
+import fastapi, uvicorn, pandas, sklearn, joblib, streamlit, xgboost
+print("Imports OK")
+PY
+
+# 6. Run FastAPI app (API server) locally with auto-reload
+uvicorn src.api:app --reload --host 0.0.0.0 --port 8000
